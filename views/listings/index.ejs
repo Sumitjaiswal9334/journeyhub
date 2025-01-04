@@ -1,24 +1,76 @@
 <% layout("/layouts/boilerplate") %> 
 <style>
-    .tax-info {
-        display: none;
-        color: blue;
+
+
+    .listing-card {
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 1rem;
+        overflow: hidden;
+        margin-top: 25px;
     }
 
-    .tax-toggle{
-        height: 3.5rem;
-        padding: 1rem;
-        margin-left: 2rem;
+    .listing-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .listing-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .card-img-top {
+        height: 20rem;
+        object-fit: cover;
+    }
+
+    .card-body {
+        background-color: #fff;
+        border-top: 2px solid #f1f1f1;
+        padding: 1.5rem;
+        position: relative;
+    }
+
+    .card-body p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .card-body b {
+        color: #333;
+        font-size: 1.2rem;
+    }
+
+    .card-body .tax-info {
+        font-size: 1rem;
+        color: #6c757d;
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+    }
+
+    /* Add some margin between cards */
+    .row-cols-lg-3 .col {
+        margin-bottom: 2rem;
+    }
+
+    .form-check-reverse {
+        display: flex;
         align-items: center;
-        text-align: center;
-
     }
+
+    .form-check-input {
+        margin-left: 1rem;
+    }
+
    
 </style>
 
   
 
-    <div class="tax-toggle">
+    <!-- <div class="tax-toggle">
         <div class="form-check-reverse form-switch">
             <input
                class="form-check-input"
@@ -30,7 +82,7 @@
               Display total after tax
             </label>   
         </div>
-    </div>
+    </div> -->
 
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
     <% for (let listing of allListings) { %>
@@ -42,7 +94,7 @@
           <p class="card-text">
            <b> <%= listing.title %> </b><br>
             &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") :'N/A'  %> / night
-            <i class="tax-info"> &nbsp; &nbsp; + 18% GST</i>
+           
         </p>
         </div>
       </div>

@@ -21,6 +21,9 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const bookingRouter = require('./routes/booking.js');
+
+
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -91,19 +94,25 @@ app.use((req,res,next)=>{
     next();
 });
 
-// app.get("/demouser", async(req,res)=>{
-//     let fakUser = new User({
-//         email: "student@gmail.com",
-//         username: "delta-student",
-//     });
 
-//     let registeredUser = await User.register(fakUser, "helloworld");
-//     res.send(registeredUser);
-// })
 
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use('/bookings', bookingRouter);
+
+app.get('/privacy', (req, res) => {
+    res.render('privacy'); // Renders privacy.ejs
+});
+
+app.get('/terms', (req, res) => {
+    res.render('terms'); // Renders terms.ejs
+});
+
+app.get('/about', (req, res) => {
+    res.render('about'); // Update the path if the file is in a different folder
+});
+
 
 
 
@@ -118,6 +127,10 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render("error.ejs", {message});
    // res.status(statusCode).send(message);
 });
+
+
+
+
 
 app.listen(8080,()=>{
     console.log("server is listening to port : 8080");

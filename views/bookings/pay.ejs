@@ -1,0 +1,100 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    /* Ensure the custom styles are applied to the payment form */
+.custom-card {
+    border-radius: 10px; /* Rounded corners for card */
+    background-color: #f9f9f9; /* Light gray background */
+    border: 1px solid #ddd; /* Light border */
+}
+
+.custom-card .card-title {
+    color: #007bff; /* Green color for the title */
+    font-weight: bold; /* Make the title bold */
+}
+
+.card-text {
+    font-size: 1.1rem; /* Slightly larger text for readability */
+    color: #333; /* Darker text for contrast */
+}
+
+.custom-select {
+    border-radius: 8px; /* Rounded corners for the select dropdown */
+    border: 1px solid #ccc; /* Light border for the select field */
+    padding: 0.5rem; /* Padding inside the select field */
+    font-size: 1rem; /* Adjust font size */
+}
+
+.custom-select:focus {
+    border-color: #007bff; /* Green border on focus */
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Add green shadow on focus */
+}
+
+.btn-success {
+    background-color: #007bff /* Green button */
+    border-color #007bff; /* Green border */
+}
+
+.btn-success:hover {
+    background-color: #007bff; /* Darker green on hover */
+    border-color: #007bff; /* Darker green border on hover */
+}
+
+/* Centered content adjustments */
+.container {
+    max-width: 800px; /* Maximum width for the container */
+}
+
+.card-body {
+    padding: 2rem; /* Padding inside the card for breathing room */
+}
+
+/* Styling for the button */
+.btn-block {
+    padding: 10px;
+    font-size: 1.2rem; /* Slightly larger text for the button */
+    cursor: pointer; /* Change the cursor to pointer for clickability */
+}
+
+.mt-5 {
+    margin-top: 3rem; /* Extra margin at the top */
+}
+
+.mt-4 {
+    margin-top: 1.5rem; /* Margin for the submit button */
+}
+
+
+</style>
+
+<div class="row mt-2">
+    <div class="col-8 offset-2">
+            <!-- Payment Details Section -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Payment for <%= booking.listing.title %></h2>
+                    <p class="card-text text-center"><strong>Total: </strong>&#8377;<%= booking.price.toLocaleString("en-IN") %> </p>
+
+                    <!-- Payment Form -->
+                    <form action="/bookings/<%= booking._id %>/pay" method="POST">
+                        <div class="form-group">
+                            <label for="paymentMethod" class="form-label">Select Payment Method:</label>
+                            <select id="paymentMethod" name="paymentMethod" class="form-control" required>
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="PayPal">PayPal</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block mt-4">Proceed to Pay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optionally include additional JavaScript for handling payment methods -->
+<script>
+    // You can add JavaScript here for payment method selection logic or other functionalities
+</script>
+

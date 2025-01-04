@@ -1,51 +1,139 @@
 <style>
-  .search-btn{
-    background-color: #fe424d;
-    color:#fff;
-    border-radius: 25px;
-    padding: 0 1rem o 1rem;
+  /* Navbar Styling */
+  .navbar {
+    background-color: #f8f9fa; /* Light background for navbar */
+    padding: 1rem 2rem; /* More padding for a spacious look */
   }
-  .search-btn:hover {
-    background-color: #fe424d;
+
+  .navbar-brand {
+  color: #007bff; /* Default color */
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+.navbar-brand:hover {
+  color: #007bff; /* Same as the default color */
+  text-decoration: none; /* Prevent any visual changes on hover */
+}
+
+  .fa-compass i:hover{
+    background-color: #0266d2;
+
+  }
+
+  .navbar-nav {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .navbar-nav .nav-link {
+    color: #333 !important;
+    padding: 0.5rem 1.2rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #007bff !important; /* Blue on hover */
+    background-color: #e2e6ea; /* Light grey on hover */
+    border-radius: 20px;
+  }
+
+  .search-btn {
+    background-color: #007bff;
     color: #fff;
+    border-radius: 25px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
   }
+
+  .search-btn:hover {
+    background-color: #0266d2;
+    color: #fff;
+    transform: scale(1.05);
+  }
+
   .search-inp {
     border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
+    padding: 0.5rem 3rem 0.5rem 1rem;
     font-size: 1rem;
-
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
   }
 
-  
+  .search-inp:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .navbar-toggler {
+    border: none;
+    background-color: #007bff; /* Toggler icon background */
+  }
+
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
+
+  .navbar-nav .nav-link b {
+    font-weight: 600;
+  }
+
+  /* Custom styling for 'Add New Listing' and auth links */
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-right: 1rem;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #0266d2;
+    text-decoration: none;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .navbar-nav.ms-auto {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .search-inp {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .search-btn {
+      width: 100%;
+    }
+  }
 </style>
 
-
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link "  href="/listings">Explore</a>
+        <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i> <b>Journeyhub</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <!--<a class="nav-link" href="/listings">Home</a>-->
+            </div>
+            <div class="navbar-nav ms-auto">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2 search-inp" type="search" placeholder="Search destination" aria-label="Search" />
+                    <button class="btn search-btn" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Add Your Home</a>
+                <% if(!currUser) { %>
+                    <a class="nav-link" href="/signup"><b>Sign up</b></a>
+                    <a class="nav-link" href="/login"><b>Log in</b></a>
+                <% } %> 
+                <% if(currUser) { %>
+                    <a class="nav-link" href="/logout"><b>Log out</b></a>
+                <% } %>
+            </div>
         </div>
-        <div class="navbar-nav ms-auto">
-          <form class="d-flex" role="search">
-            <input class ="form-control me-2 search-inp" type="search" placeholder="Search  destination" />
-            <button class="btn search-btn" type="submit">Search</button>
-          </form>
-        </div>
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Add New Listing</a>
-          <% if(!currUser) { %>
-          <a class="nav-link "  href="/signup"><b>Sign up</b></a>
-          <a class="nav-link" href="/login"><b>Log in</b></a>
-          <% } %> <% if(currUser) { %>
-          <a class="nav-link" href="/logout"><b>Log out</b></a>
-          <% } %>
-        </div>
-      </div>
     </div>
-  </nav> 
- 
+</nav>

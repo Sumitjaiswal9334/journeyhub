@@ -17,9 +17,12 @@
     background-color: white;
 }
 
-.fa-compass {
-    color: #fe424d;
+.fa-compass i{
+    color: #007bff;
     font-size: 2rem;
+   /* flex:display;*/
+    margin-top: 15px;
+    /*size: 100px;*/
 }
 
 .nav-link{
@@ -89,12 +92,12 @@
     opacity: 0;
 }
 
-.card-img-overlay:hover {
+/*.card-img-overlay:hover {
     opacity: 0.2;
      background-color: white;
-}
+}*/
 
-.add-btn{
+/*.add-btn{
    background-color:  #fe424d !important;
    border: none !important;
 }
@@ -102,7 +105,7 @@
 .edit-btn{
     background-color:  #fe424d !important;
    border: none !important;
-}
+}*/
 
 .show-img{
     height: 30vh;
