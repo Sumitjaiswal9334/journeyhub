@@ -68,7 +68,7 @@ router.post('/:id/pay', isLoggedIn, async (req, res) => {
             line_items: [
                 {
                     price_data: {
-                        currency: 'usd',
+                        currency: 'inr',
                         product_data: {
                             name: booking.listing.title,
                         },
